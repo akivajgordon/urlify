@@ -23,5 +23,14 @@
                 });
             });
         });
+
+
+        describe("space-separated alphanumeric words", function () {
+            describe("given 'hello world'", function () {
+                it("should return 'hello-world'", function () {
+                    expect(urlify('hello world')).toBe('hello-world');
+                });
+            });
+        });
     });
 }());

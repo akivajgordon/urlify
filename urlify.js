@@ -4,6 +4,6 @@
     "use strict";
 
     module.exports = function (str) {
-        return str;
+        return str.split(' ').join('-');
     };
 }());
