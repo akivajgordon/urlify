@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Convert a string to a sensible, hyphen-separated URL fragment",
-  "main": "index.js",
+  "main": "urlify.js",
   "scripts": {
     "test": "jasmine"
   },
