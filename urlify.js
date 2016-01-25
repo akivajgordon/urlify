@@ -5,7 +5,8 @@
 
     module.exports = function (str) {
         const joinedAlphaNumeric = str
-            .replace(/[^a-zA-Z0-9]/g, '-')
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, '-')
             .replace(/-+/g, '-');
 
         const startIndex = joinedAlphaNumeric.startsWith('-')
