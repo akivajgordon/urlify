@@ -4,6 +4,6 @@
     "use strict";
 
     module.exports = function (str) {
-        return str.split(' ').join('-');
+        return str.replace(/[^a-zA-Z0-9]/g, '-');
     };
 }());
