@@ -9,6 +9,9 @@
   },
   "author": "Akiva Gordon",
   "license": "ISC",
+  "files": [
+      "urlify.js"
+  ],
   "devDependencies": {
     "jasmine": "^2.4.1"
   }
