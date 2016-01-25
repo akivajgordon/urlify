@@ -52,5 +52,19 @@
                 });
             });
         });
+
+        describe("consecutive non-alphanumeric characters", function () {
+            describe("given 'hello. -world'", function () {
+                it("should return 'hello-world'", function () {
+                    expect(urlify('hello. -world')).toBe('hello-world');
+                });
+            });
+
+            describe("given 'hell...o- !world'", function () {
+                it("should return 'hell-o-world'", function () {
+                    expect(urlify('hell...o- !world')).toBe('hell-o-world');
+                });
+            });
+        });
     });
 }());
