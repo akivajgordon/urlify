@@ -11,77 +11,75 @@
 
     describe("urlify", function () {
         describe("only lowercase alphanumeric characters", function () {
-            describe("given hello", function () {
-                it("should return hello", function () {
+            describe("given a simple word", function () {
+                it("should return that word", function () {
                     expect(urlify('hello')).toBe('hello');
                 });
             });
 
-            describe("given world123", function () {
-                it("should return world123", function () {
+            describe("given a simple word with numbers", function () {
+                it("should return that word", function () {
                     expect(urlify('world123')).toBe('world123');
                 });
             });
 
-            describe("given HeLlO", function () {
-                it("should return 'hello'", function () {
+            describe("given a word with uppercase letters", function () {
+                it("should return that word lowercased", function () {
                     expect(urlify('HeLlO')).toBe('hello');
                 });
             });
         });
 
 
-        describe("space-separated alphanumeric words", function () {
-            describe("given 'hello world'", function () {
-                it("should return 'hello-world'", function () {
-                    expect(urlify('hello world')).toBe('hello-world');
-                });
+        describe("given space-separated alphanumeric words", function () {
+            it("should return the same words separated by a hyphen", function () {
+                expect(urlify('hello world')).toBe('hello-world');
             });
         });
 
         describe("punctuation marks", function () {
-            describe("given 'hello.world'", function () {
-                it("should return 'hello-world'", function () {
+            describe("given period-separated words", function () {
+                it("should return the same words separated by a hyphen", function () {
                     expect(urlify('hello.world')).toBe('hello-world');
                 });
             });
 
-            describe("given 'hell.o.world'", function () {
-                it("should return 'hell-o-world'", function () {
+            describe("given multiple period-separated words", function () {
+                it("should return the same words separated by hyphens", function () {
                     expect(urlify('hell.o.world')).toBe('hell-o-world');
                 });
             });
 
-            describe("given 'hell!o.world'", function () {
-                it("should return 'hell-o-world'", function () {
+            describe("given words separated by multiple punctuation marks", function () {
+                it("should return the words with hyphens instead of the punctuation marks", function () {
                     expect(urlify('hell!o.world')).toBe('hell-o-world');
                 });
             });
         });
 
         describe("consecutive non-alphanumeric characters", function () {
-            describe("given 'hello. -world'", function () {
-                it("should return 'hello-world'", function () {
+            describe("given two words separated by multiple bad characters", function () {
+                it("should return the words separated by one hyphen", function () {
                     expect(urlify('hello. -world')).toBe('hello-world');
                 });
             });
 
-            describe("given 'hell...o- !world'", function () {
-                it("should return 'hell-o-world'", function () {
+            describe("given multiple words separated by multiple bad characters", function () {
+                it("should return the words separated by one hyphen", function () {
                     expect(urlify('hell...o- !world')).toBe('hell-o-world');
                 });
             });
         });
 
         describe("trimming", function () {
-            describe("given '&%hello world'", function () {
-                it("should return 'hello-world'", function () {
+            describe("given words that start with bad characters", function () {
+                it("should return hyphen-separated words without a leading hyphen", function () {
                     expect(urlify('&%hello world')).toBe('hello-world');
                 });
             });
 
-            describe("given 'hello world&%'", function () {
-                it("should return 'hello-world'", function () {
+            describe("given words that end with bad characters", function () {
+                it("should return hyphen-separated words without a trailing hyphen", function () {
                     expect(urlify('hello world&%')).toBe('hello-world');
                 });
             });
