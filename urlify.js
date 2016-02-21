@@ -14,7 +14,7 @@
             .join('-');
     };
 
-    if (module) {
+    if (typeof module !== 'undefined') {
         module.exports = urlify;
     } else {
         window.urlify = urlify;
