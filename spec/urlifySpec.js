@@ -10,6 +10,11 @@
         urlify = require('../urlify.js');
 
     describe("urlify", function () {
+        describe("no input at all", function () {
+            it("should return an empty string", function () {
+                expect(urlify()).toBe('');
+            });
+        });
         describe("only lowercase alphanumeric characters", function () {
             describe("given a simple word", function () {
                 it("should return that word", function () {
