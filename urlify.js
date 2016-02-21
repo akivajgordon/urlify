@@ -1,9 +1,10 @@
 /*jslint es6, node: true */
+/*global window*/
 
 (function () {
     "use strict";
 
-    module.exports = function (str) {
+    var urlify = function (str) {
         return str
             .toLowerCase()
             .replace(/[^a-z0-9]/g, ' ')
@@ -12,4 +13,10 @@
             .split(' ')
             .join('-');
     };
+
+    if (typeof module !== 'undefined') {
+        module.exports = urlify;
+    } else {
+        window.urlify = urlify;
+    }
 }());
