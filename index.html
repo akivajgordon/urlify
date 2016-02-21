@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>URL-ify</title>
+        <title>urlify</title>
+        <link rel="stylesheet" href="css/style.css" charset="utf-8">
         <script src="https://raw.githubusercontent.com/akivajgordon/urlify/master/urlify.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
         <script>
@@ -10,16 +11,20 @@
                 "use strict";
 
                 angular.module('urlify', [])
-                    .controller('ExampleController', [function () {
-                        var self = this;
-
-                        self.urlify = urlify;
-                    }]);
+                    .filter('urlify', [function () {
+                        return urlify;
+                    }])
             }(window.urlify));
         </script>
     </head>
-    <body ng-app="urlify" ng-controller="ExampleController as ctrl">
-        <input type="text" ng-model="str" name="string" value="" placeholder="e.g. Hello, St. Louis!">
-        <ouput>{{ctrl.urlify(str)}}</output>
+    <body ng-app="urlify">
+        <h1>urlify</h1>
+        <p class="description">
+            Turn strings into URL-friendly fragments.
+        </p>
+        <div class="container">
+            <input class="input" type="text" ng-model="str" placeholder="e.g. Hello, St. Louis!" autofocus>
+            <output class="output">{{str || 'Hello, St. Louis!' | urlify}}</output>
+        </div>
     </body>
 </html>
