@@ -6,12 +6,15 @@
 
     var urlify = function (str) {
         return str
-            .toLowerCase()
-            .replace(/[^a-z0-9]/g, ' ')
-            .replace(/\s+/g, ' ')
-            .trim()
-            .split(' ')
-            .join('-');
+            ? str
+                .toLowerCase()
+                .replace(/'/g, '')
+                .replace(/[^a-z0-9]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .split(' ')
+                .join('-')
+            : '';
     };
 
     if (typeof module !== 'undefined') {

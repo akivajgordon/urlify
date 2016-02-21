@@ -10,6 +10,12 @@
         urlify = require('../urlify.js');
 
     describe("urlify", function () {
+        describe("no input at all", function () {
+            it("should return an empty string", function () {
+                expect(urlify()).toBe('');
+            });
+        });
+
         describe("only lowercase alphanumeric characters", function () {
             describe("given a simple word", function () {
                 it("should return that word", function () {
@@ -82,6 +88,13 @@
                 it("should return hyphen-separated words without a trailing hyphen", function () {
                     expect(urlify('hello world&%')).toBe('hello-world');
                 });
+            });
+        });
+
+        describe("apostrophes", function () {
+            it("should remove all apostrophes before hyphenating", function () {
+                expect(urlify("He said, 'Don\'t do that!' to him."))
+                    .toBe('he-said-dont-do-that-to-him');
             });
         });
     });
