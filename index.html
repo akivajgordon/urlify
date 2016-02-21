@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>URL-ify</title>
+        <script src="js/urlify.js" charset="utf-8"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script>
+            (function (urlify) {
+                "use strict";
+
+                angular.module('urlify', [])
+                    .controller('ExampleController', [function () {
+                        var self = this;
+
+                        self.urlify = urlify;
+                    }]);
+            }(window.urlify));
+        </script>
+    </head>
+    <body ng-app="urlify" ng-controller="ExampleController as ctrl">
+        <input type="text" ng-model="str" name="string" value="" placeholder="e.g. Hello, St. Louis!">
+        <ouput>{{ctrl.urlify(str)}}</output>
+    </body>
+</html>
